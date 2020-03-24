@@ -1,1 +1,17 @@
-
+- !policy
+  id: conjur
+  body:
+    - !policy
+        id: cluster/josh-cluster
+        body:
+        - !layer
+        - &hosts
+          - !host
+            id: ec2-54-245-13-129.us-west-2.compute.amazonaws.com
+          - !host
+            id: ec2-34-217-20-180.us-west-2.compute.amazonaws.com
+          - !host
+            id: ec2-34-220-198-176.us-west-2.compute.amazonaws.com
+        - !grant
+          role: !layer
+          member: *hosts
